@@ -381,82 +381,222 @@
         margin-bottom: 4px;
       }
 
-      .site-footer {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: 26px 28px 42px;
-        color: var(--muted);
-        font-size: 0.86rem;
-      }
-
-      .fade-up {
-        opacity: 0;
-        transform: translateY(28px);
-        transition:
-          opacity 800ms ease,
-          transform 800ms ease;
-      }
-
-      .fade-up.is-visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      @media (max-width: 960px) {
-        .hero__inner,
-        .work,
-        .work:nth-child(even),
-        .statement__inner,
-        .about,
-        .contact__grid {
-          grid-template-columns: 1fr;
-        }
-
-        .work:nth-child(even) .work__caption {
-          order: initial;
-        }
-
-        .hero {
-          min-height: auto;
-          padding-top: 32px;
-        }
-
-        .hero__text,
-        .work__caption {
-          max-width: none;
-        }
-
-        .statement__content p {
-          max-width: none;
-        }
-      }
-
-      @media (max-width: 680px) {
-        .nav {
-          align-items: flex-start;
-          flex-direction: column;
-        }
-
-        .nav__links {
-          gap: 14px;
-          flex-wrap: wrap;
-        }
-
-        main {
-          padding-top: 110px;
-        }
-
-        .section,
-        .hero {
-          padding-left: 18px;
-          padding-right: 18px;
-        }
-
         .site-footer {
-          padding-left: 18px;
-          padding-right: 18px;
-        }
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 26px 28px 42px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 16px;
+      font-size: 0.82rem;
+    }
+
+    .footer__links a {
+      position: relative;
+    }
+
+    .footer__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .footer__links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .footer__button {
+      background: none;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .footer__button::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .footer__button:hover::after,
+    .footer__button:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .legal-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(31, 36, 48, 0.28);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .legal-modal.is-open {
+      display: flex;
+    }
+
+    .legal-modal__panel {
+      width: min(760px, 100%);
+      max-height: min(82vh, 900px);
+      overflow-y: auto;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(31, 36, 48, 0.12);
+      padding: 28px 28px 32px;
+      position: relative;
+    }
+
+    .legal-modal__close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .legal-modal__title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1;
+      margin: 0 0 20px;
+      padding-right: 48px;
+    }
+
+    .legal-modal__section + .legal-modal__section {
+      margin-top: 28px;
+    }
+
+    .legal-modal__section h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin: 0 0 10px;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 500;
+    }
+
+    .legal-modal__section p {
+      margin: 0 0 12px;
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    .legal-modal__section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 800ms ease, transform 800ms ease;
+    }
+
+    .fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 960px) {
+      .hero__inner,
+      .work,
+      .work:nth-child(even),
+      .statement__inner,
+      .about,
+      .contact__grid {
+        grid-template-columns: 1fr;
       }
+
+      .work:nth-child(even) .work__caption {
+        order: initial;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 32px;
+      }
+
+      .hero__text,
+      .work__caption {
+        max-width: none;
+      }
+
+      .statement__content p {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav__links {
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      main {
+        padding-top: 110px;
+      }
+
+      .section,
+      .hero {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .site-footer {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .legal-modal {
+        padding: 12px;
+      }
+
+      .legal-modal__panel {
+        padding: 22px 18px 24px;
+      }
+    }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -689,23 +829,123 @@ Ihr Ausgangspunkt ist immer ein erster Impuls von außen oder innen, eine Bewegu
       </section>
     </main>
 
-    <footer class="site-footer">© 2026 Tarsia Ax</footer>
+<footer class="site-footer">
+    <div>© 2025 Dein Name</div>
+    <div class="footer__links">
+      <button class="footer__button" type="button" data-legal-open="impressum">Impressum</button>
+      <button class="footer__button" type="button" data-legal-open="datenschutz">Datenschutz</button>
+    </div>
+  </footer>
 
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-            }
-          });
-        },
-        { threshold: 0.15 },
-      );
+  <div class="legal-modal" id="legal-modal" aria-hidden="true">
+    <div class="legal-modal__panel" role="dialog" aria-modal="true" aria-labelledby="legal-modal-title">
+      <button class="legal-modal__close" type="button" aria-label="Schließen">×</button>
+      <h2 class="legal-modal__title" id="legal-modal-title">Impressum</h2>
+      <div class="legal-modal__content"></div>
+    </div>
+  </div>
 
-      document
-        .querySelectorAll(".fade-up")
-        .forEach((el) => observer.observe(el));
-    </script>
-  </body>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+    const legalContent = {
+      impressum: `
+        <div class="legal-modal__section">
+          <h3>Angaben gemäß § 5 TMG</h3>
+          <p>Tarsia Ax<br>Bonn, Deutschland</p>
+        </div>
+        <div class="legal-modal__section">
+          <h3>Kontakt</h3>
+          <p>E-Mail: <a href="mailto:ax@tarsia.de">ax@tarsia.de</a></p>
+        </div>
+        <div class="legal-modal__section">
+          <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
+          <p>Tarsia Ax<br>Bonn, Deutschland</p>
+        </div>
+        <div class="legal-modal__section">
+          <h3>Hinweis</h3>
+          <p>Bitte ergänze hier deine vollständige ladungsfähige Anschrift, bevor du die Seite veröffentlichst.</p>
+        </div>
+      `,
+      datenschutz: `
+        <div class="legal-modal__section">
+          <h3>Allgemeine Hinweise</h3>
+          <p>Diese Website dient der Präsentation künstlerischer Arbeiten. Personenbezogene Daten werden nur erhoben, wenn du mich direkt kontaktierst, etwa per E-Mail.</p>
+        </div>
+        <div class="legal-modal__section">
+          <h3>Server-Logfiles</h3>
+          <p>Beim Besuch dieser Website können durch den Hosting-Anbieter technisch notwendige Daten wie IP-Adresse, Datum und Uhrzeit des Zugriffs, Browsertyp und Betriebssystem verarbeitet werden. Diese Verarbeitung erfolgt zur Bereitstellung und Sicherheit der Website.</p>
+        </div>
+        <div class="legal-modal__section">
+          <h3>Kontaktaufnahme</h3>
+          <p>Wenn du per E-Mail Kontakt aufnimmst, werden deine Angaben zur Bearbeitung der Anfrage sowie für mögliche Anschlussfragen gespeichert. Diese Daten werden nicht ohne deine Einwilligung weitergegeben.</p>
+        </div>
+        <div class="legal-modal__section">
+          <h3>Externe Inhalte</h3>
+          <p>Beim Laden der eingebundenen Google Fonts kann eine Verbindung zu Servern von Google hergestellt werden. Prüfe vor Veröffentlichung, ob du Fonts lokal hosten oder diesen Hinweis weiter ausführen möchtest.</p>
+        </div>
+        <div class="legal-modal__section">
+          <h3>Rechte der betroffenen Personen</h3>
+          <p>Du hast im Rahmen der geltenden gesetzlichen Bestimmungen das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung sowie Widerspruch gegen die Verarbeitung deiner personenbezogenen Daten.</p>
+        </div>
+        <div class="legal-modal__section">
+          <h3>Kontakt zum Datenschutz</h3>
+          <p>Bei Fragen zum Datenschutz kannst du dich an folgende Adresse wenden: <a href="mailto:ax@tarsia.de">ax@tarsia.de</a></p>
+        </div>
+      `
+    };
+
+    const modal = document.getElementById('legal-modal');
+    const modalTitle = document.getElementById('legal-modal-title');
+    const modalContent = modal.querySelector('.legal-modal__content');
+    const closeButton = modal.querySelector('.legal-modal__close');
+    const openButtons = document.querySelectorAll('[data-legal-open]');
+    let lastTrigger = null;
+
+    function openModal(type) {
+      lastTrigger = document.activeElement;
+      modalTitle.textContent = type === 'impressum' ? 'Impressum' : 'Datenschutz';
+      modalContent.innerHTML = legalContent[type];
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeButton.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastTrigger) {
+        lastTrigger.focus();
+      }
+    }
+
+    openButtons.forEach((button) => {
+      button.addEventListener('click', () => openModal(button.dataset.legalOpen));
+    });
+
+    closeButton.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
 </html>
