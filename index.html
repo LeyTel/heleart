@@ -1100,130 +1100,22 @@ Ihr Ausgangspunkt ist immer ein erster Impuls von außen oder innen, eine Bewegu
         }
       });
 
-      <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-      }
-    });
-  }, { threshold: 0.15 });
+      document.querySelectorAll('.work__figure img').forEach((img) => {
+        const updateRatio = () => {
+          if (!img.naturalWidth || !img.naturalHeight) return;
+          const ratio = img.naturalWidth / img.naturalHeight;
+          const work = img.closest('.work');
+          if (work) {
+            work.style.setProperty('--media-ratio', ratio);
+          }
+        };
 
-  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
-
-  const legalContent = {
-    impressum: `
-      <div class="legal-modal__section">
-        <h3>Angaben gemäß § 5 TMG</h3>
-        <p> Helena Wiemer (Künstlername: Tarsia Ax)<br>Bornheimerstr. 41, 53111 Bonn, Deutschland, +49 160 99124525</p>
-      </div>
-      <div class="legal-modal__section">
-        <h3>Kontakt</h3>
-        <p>E-Mail: <a href="mailto:ax@tarsia.de">ax@tarsia.de</a></p>
-      </div>
-      <div class="legal-modal__section">
-        <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h3>
-        <p>Helena Wiemer<br>Bonn, Deutschland</p>
-      </div>
-      <div class="legal-modal__section">
-        <h3>Haftung für Inhalte</h3>
-        <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
-        Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
-        <h3>Haftung für Links</h3>
-        <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
-        Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
-        <h3>Urheberrecht</h3>
-        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
-        Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen</p>
-      </div>
-    `,
-    datenschutz: `
-      <div class="legal-modal__section">
-        <h3>1. Datenschutz auf einen Blick</h3>
-        <p>Personenbezogene Daten werden nur erhoben, wenn Sie mich direkt kontaktieren, etwa per E-Mail oder über soziale Netzwerke.</p>
-      </div>
-      <div class="legal-modal__section">
-        <h3>2. Verantwortliche Stelle</h3>
-        <p>Helena Wiemer<br>Bornheimerstr. 41, 53111 Bonn<br>E-Mail: <a href="mailto:ax@tarsia.de">ax@tarsia.de</a></p>
-      </div>
-      <div class="legal-modal__section">
-        <h3>3. Datenerfassung</h3>
-        <p><strong>Server-Log-Dateien:</strong> Der Hosting-Anbieter erhebt automatisch Daten wie IP-Adresse, Browsertyp und Zeit des Zugriffs. Dies dient der Sicherheit und Funktionalität der Seite.</p>
-        <p><strong>Kontaktaufnahme:</strong> Wenn Sie mir eine E-Mail schreiben, werden Ihre Daten gespeichert, um die Anfrage bearbeiten zu können.</p>
-      </div>
-      <div class="legal-modal__section">
-        <h3>4. Web Fonts</h3>
-        <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten lokale Web Fonts. Diese werden auf unserem eigenen Server gehostet. Eine Verbindung zu Servern von Google findet nicht statt.</p>
-      </div>
-      <div class="legal-modal__section">
-        <h3>5. Ihre Rechte</h3>
-        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Widerspruch bezüglich Ihrer gespeicherten Daten. Wenden Sie sich hierzu bitte an die oben genannte E-Mail-Adresse.</p>
-      </div>
-    `
-  };
-
-  const modal = document.getElementById('legal-modal');
-  const modalTitle = document.getElementById('legal-modal-title');
-  const modalContent = modal.querySelector('.legal-modal__content');
-  const closeButton = modal.querySelector('.legal-modal__close');
-  const openButtons = document.querySelectorAll('[data-legal-open]');
-  let lastTrigger = null;
-
-  function openModal(type) {
-    lastTrigger = document.activeElement;
-    modalTitle.textContent = type === 'impressum' ? 'Impressum' : 'Datenschutz';
-    modalContent.innerHTML = legalContent[type];
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    closeButton.focus();
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (lastTrigger) {
-      lastTrigger.focus();
-    }
-  }
-
-  openButtons.forEach((button) => {
-    button.addEventListener('click', () => openModal(button.dataset.legalOpen));
-  });
-
-  closeButton.addEventListener('click', closeModal);
-
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      closeModal();
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
-      closeModal();
-    }
-  });
-
-  document.querySelectorAll('.work__figure img').forEach((img) => {
-    const updateRatio = () => {
-      if (!img.naturalWidth || !img.naturalHeight) return;
-      const ratio = img.naturalWidth / img.naturalHeight;
-      const work = img.closest('.work');
-      if (work) {
-        work.style.setProperty('--media-ratio', ratio);
-      }
-    };
-
-    if (img.complete) {
-      updateRatio();
-    } else {
-      img.addEventListener('load', updateRatio);
-    }
-  });
-      
-</script>
+        if (img.complete) {
+          updateRatio();
+        } else {
+          img.addEventListener('load', updateRatio);
+        }
+      });
     </script>
   </body>
 </html>
