@@ -212,7 +212,7 @@
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
         gap: 34px;
-        align-items: end;
+        align-items: start;
       }
 
       .work:nth-child(even) {
@@ -223,47 +223,24 @@
         order: -1;
       }
 
-      .works {
-  display: grid;
-  gap: 120px;
-}
+      .work__figure {
+        margin: 0;
+        background: var(--surface);
+        padding: 18px;
+      }
 
-.work {
-  --media-ratio: 0.8;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
-  gap: 34px;
-  align-items: center;
-}
+      .work__figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: auto;
+        object-fit: contain;
+        background: #eadfe2;
+      }
 
-.work:nth-child(even) {
-  grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
-}
-
-.work:nth-child(even) .work__caption {
-  order: -1;
-}
-
-.work__figure {
-  margin: 0;
-  background: var(--surface);
-  padding: 18px;
-  width: min(100%, clamp(260px, calc(62vh * var(--media-ratio)), 820px));
-}
-
-.work__figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: auto;
-  object-fit: contain;
-  background: #eadfe2;
-}
-
-.work__caption {
-  align-self: center;
-  max-width: 28ch;
-}
+      .work__caption {
+        max-width: 28ch;
+      }
 
       .work__title {
         font-family: "Cormorant Garamond", Georgia, serif;
@@ -1068,22 +1045,6 @@ Ihr Ausgangspunkt ist immer ein erster Impuls von außen oder innen, eine Bewegu
         }
       });
 
-      document.querySelectorAll('.work__figure img').forEach((img) => {
-        const updateRatio = () => {
-          if (!img.naturalWidth || !img.naturalHeight) return;
-          const ratio = img.naturalWidth / img.naturalHeight;
-          const work = img.closest('.work');
-          if (work) {
-            work.style.setProperty('--media-ratio', ratio);
-          }
-        };
-
-        if (img.complete) {
-          updateRatio();
-        } else {
-          img.addEventListener('load', updateRatio);
-        }
-      });
     </script>
   </body>
 </html>
