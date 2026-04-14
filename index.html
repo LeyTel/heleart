@@ -174,9 +174,10 @@
       }
 
       h1 {
-        font-size: clamp(3rem, 8vw, 5.7rem);
-        line-height: 0.92;
+        font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+        line-height: 0.95;
         margin-bottom: 20px;
+        hyphens: auto;
       }
 
       .hero__intro {
@@ -233,9 +234,43 @@
         display: block;
         width: 100%;
         height: auto;
+        max-height: 80vh;
         aspect-ratio: auto;
         object-fit: contain;
         background: #eadfe2;
+      }
+
+      /* Feature works — large paintings, full presence */
+      .work--feature {
+        grid-template-columns: minmax(0, 1.5fr) minmax(240px, 300px);
+      }
+      .work--feature:nth-child(even) {
+        grid-template-columns: minmax(240px, 300px) minmax(0, 1.5fr);
+      }
+      .work--feature .work__figure img {
+        max-height: 85vh;
+      }
+
+      /* Detail works — cropped/close-up views, visually subordinate */
+      .work--detail {
+        grid-template-columns: minmax(0, 0.85fr) minmax(240px, 300px);
+      }
+      .work--detail:nth-child(even) {
+        grid-template-columns: minmax(240px, 300px) minmax(0, 0.85fr);
+      }
+      .work--detail .work__figure img {
+        max-height: 65vh;
+      }
+
+      /* Small works — prints, works on paper */
+      .work--small {
+        grid-template-columns: minmax(0, 0.65fr) minmax(220px, 280px);
+      }
+      .work--small:nth-child(even) {
+        grid-template-columns: minmax(220px, 280px) minmax(0, 0.65fr);
+      }
+      .work--small .work__figure img {
+        max-height: 50vh;
       }
 
       .work__caption {
@@ -680,7 +715,7 @@
 
       <section id="works" class="section">
         <div class="section__inner works">
-          <article class="work fade-up">
+          <article class="work work--feature fade-up">
             <figure class="work__figure">
               <img
                 src="abstract.jpeg"
@@ -696,7 +731,7 @@
             </div>
           </article>
 
-          <article class="work fade-up">
+          <article class="work work--detail fade-up">
             <figure class="work__figure">
               <img
                 src="abstractdetail.jpeg"
@@ -712,7 +747,7 @@
             </div>
           </article>
 
-          <article class="work fade-up">
+          <article class="work work--feature fade-up">
             <figure class="work__figure">
               <img
                 src="zwischenraum1.jpeg"
@@ -728,7 +763,7 @@
             </div>
           </article>
 
-          <article class="work fade-up">
+          <article class="work work--detail fade-up">
             <figure class="work__figure">
               <img
                 src="Zwischenraum.jpeg"
@@ -744,7 +779,7 @@
             </div>
           </article>
 
-          <article class="work fade-up">
+          <article class="work work--small fade-up">
             <figure class="work__figure">
               <img
                 src="weinblau.jpeg"
@@ -760,7 +795,7 @@
             </div>
           </article>
 
-          <article class="work fade-up">
+          <article class="work work--small fade-up">
             <figure class="work__figure">
               <img
                 src="weingrau.jpeg"
@@ -777,7 +812,7 @@
           </article>
 
 
-          <article class="work fade-up">
+          <article class="work work--feature fade-up">
             <figure class="work__figure">
               <img
                 src="schwebe3.jpeg"
@@ -793,7 +828,7 @@
             </div>
           </article>
 
-          <article class="work fade-up">
+          <article class="work work--detail fade-up">
             <figure class="work__figure">
               <img
                 src="schwebedetail.jpeg"
@@ -810,7 +845,7 @@
           </article>
 
 
-          <article class="work fade-up">
+          <article class="work work--feature fade-up">
             <figure class="work__figure">
               <img
                 src="transgression.jpeg"
@@ -827,7 +862,7 @@
           </article>
 
        
-           <article class="work fade-up">
+           <article class="work work--small fade-up">
             <figure class="work__figure">
               <img
                 src="tragen.jpeg"
@@ -844,7 +879,7 @@
           </article>
 
 
-          <article class="work fade-up">
+          <article class="work work--small fade-up">
             <figure class="work__figure">
               <img
                 src="getragenwerden.jpeg"
