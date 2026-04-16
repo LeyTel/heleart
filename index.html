@@ -393,6 +393,83 @@
         border-top: 1px solid var(--line);
       }
 
+      .ausstellung {
+        background: var(--accent);
+        color: var(--bg);
+      }
+
+      .ausstellung__inner {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 110px 28px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 72px;
+        align-items: center;
+      }
+
+      .ausstellung__flyer {
+        margin: 0;
+      }
+
+      .ausstellung__flyer img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 80vh;
+      }
+
+      .ausstellung__label {
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.6;
+        margin: 0 0 20px;
+      }
+
+      .ausstellung__title {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
+        font-weight: 500;
+        line-height: 1.05;
+        margin: 0 0 32px;
+        letter-spacing: 0.01em;
+      }
+
+      .ausstellung__details {
+        display: grid;
+        gap: 16px;
+      }
+
+      .ausstellung__item {
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(246, 243, 238, 0.15);
+      }
+
+      .ausstellung__item span {
+        display: block;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.6;
+        margin-bottom: 4px;
+      }
+
+      .ausstellung__item p {
+        margin: 0;
+        font-size: 0.97rem;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 960px) {
+        .ausstellung__inner {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 72px 28px;
+        }
+      }
+
       .contact__grid {
         max-width: var(--max-width);
         margin: 0 auto;
@@ -684,6 +761,7 @@
         </div>
         <div class="nav__links">
           <a href="#works">Arbeiten</a>
+          <a href="#ausstellungen">Ausstellungen</a>
           <a href="#statement">Statement</a>
           <a href="#about">Über mich</a>
           <a href="#contact">Kontakt</a>
@@ -897,6 +975,32 @@
           
 
           
+        </div>
+      </section>
+
+      <section id="ausstellungen" class="ausstellung">
+        <div class="ausstellung__inner fade-up">
+          <figure class="ausstellung__flyer">
+            <img src="fruehlingssalon2026.jpg" alt="Flyer BONNER Frühlingssalon 2026" />
+          </figure>
+          <div class="ausstellung__text">
+            <p class="ausstellung__label">Kommende Ausstellung</p>
+            <h2 class="ausstellung__title">BONNER Frühlingssalon in The Stage Gallery</h2>
+            <div class="ausstellung__details">
+              <div class="ausstellung__item">
+                <span>Vernissage</span>
+                <p>07. Mai 2026 · 19 – 21 Uhr</p>
+              </div>
+              <div class="ausstellung__item">
+                <span>Ausstellung</span>
+                <p>08. Mai 2026<br>Di. – Fr. 14 – 18 Uhr · So. 14 – 17 Uhr</p>
+              </div>
+              <div class="ausstellung__item">
+                <span>Ort</span>
+                <p>The Stage Gallery<br>Thomas-Mann-Str. 41<br>53111 Bonn</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
