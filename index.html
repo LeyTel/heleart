@@ -240,38 +240,7 @@
         max-height: 80vh;
       }
 
-      /* Feature works — large paintings, full presence */
-      .work--feature {
-        grid-template-columns: minmax(0, 1.5fr) minmax(240px, 300px);
-      }
-      .work--feature:nth-child(even) {
-        grid-template-columns: minmax(240px, 300px) minmax(0, 1.5fr);
-      }
-      .work--feature .work__figure img {
-        max-height: 82vh;
-      }
-
-      /* Detail works — cropped/close-up views, visually subordinate */
-      .work--detail {
-        grid-template-columns: minmax(0, 0.85fr) minmax(240px, 300px);
-      }
-      .work--detail:nth-child(even) {
-        grid-template-columns: minmax(240px, 300px) minmax(0, 0.85fr);
-      }
-      .work--detail .work__figure img {
-        max-height: 62vh;
-      }
-
-      /* Small works — prints, works on paper */
-      .work--small {
-        grid-template-columns: minmax(0, 0.65fr) minmax(220px, 280px);
-      }
-      .work--small:nth-child(even) {
-        grid-template-columns: minmax(220px, 280px) minmax(0, 0.65fr);
-      }
-      .work--small .work__figure img {
-        max-height: 45vh;
-      }
+      /* Size hierarchy handled in Canva — all works use the same grid */
 
       .work__caption {
         max-width: 28ch;
